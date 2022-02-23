@@ -11,21 +11,6 @@ public class SessionGameService {
     private final long TEN_MINUTES = (10 * 60 * 1000);
 
     public SessionResponse getSessionByUser(EventRequest request) {
-
-        /**
-         * Deve-se mapear todos os events by visitorID
-         * Deve-se mapear e agrupar todas as rotas no qual o usuario acessou dentro do range de 10 minutos comparando os seus timestamp
-         *  exemplo
-         *
-         *  {
-         *       "duration" : 1425761,
-         *       "pages" : [ "/whirl-doubtful-flesh/cheer-aboard-thread", "/alert-faint-daughter", "/knit-loose-caption/smash-changeable-measure", "/shine-towering-flag", "/shine-towering-flag", "/pioneer-clammy-fire/photograph-wide-eyed-quince", "/skip-mature-goat", "/operate-aboriginal-story" ],
-         *       "startTime" : 1515102395118
-         *   }
-         *
-         *
-         * */
-
         final Map<String, List<Event>> eventsByVisitorID = request.getEvents().stream()
                 .collect(Collectors.groupingBy(Event::getVisitorId))
                 .entrySet()
